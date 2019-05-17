@@ -1,0 +1,25 @@
+<form ngNativeValidate #form>
+  <div class="container row">
+    <div class="control-group col-lg-4 col-lg-offset-4">
+      <label class="control-label" for="recipient">Select recipient</label>
+      <div class="controls">
+        <select class="form-control" name="recipient" [(ngModel)]="transferAmount.CorrespondentUserId" required>
+          <option [value]="user.userId" *ngFor="let user of users">{{user.name}}</option>
+        </select>
+        <p class="help-block"></p>
+      </div>
+    </div>
+    <div class="control-group col-lg-4 col-lg-offset-4">
+      <label for="amount">Enter amount</label>
+      <div class="controls">
+        <input type="number" class="form-control" [(ngModel)]="transferAmount.amount" name="amount" min="0.01" step="0.01" ng-pattern="^\d+(?:(\.|\,)\d{0,2})?$" required />
+        <p class="help-block"></p>
+      </div>
+    </div>
+    <div class="control-group col-lg-4 col-lg-offset-4">
+      <div class="controls center-block">
+        <button class="btn btn-success center-block" type="submit" (click)="form.checkValidity() ? transfer(transferAmount) : null">Transfer</button>
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,26 @@
+<form ngNativeValidate #form>
+  <div class="container row">
+    <div class="control-group col-lg-4 col-lg-offset-4">
+      <table matSort class="table table-hover table-hover" (matSortChange)="sortData($event)">
+        <thead>
+          <tr>
+            <th mat-sort-header="Date">Date</th>
+            <th mat-sort-header="Name">Name</th>
+            <th mat-sort-header="Amount">Amount</th>
+            <th mat-sort-header="Balance">Balance</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let payment of payments">
+            <td>{{payment.date | date:'dd/MM/yyyy HH:mm:ss'}}</td>
+            <td>{{payment.correspondentUser.name}}</td>
+            <td>{{payment.amount}}</td>
+            <td>{{payment.balance}}</td>
+            <td><a (click)="RowSelected(payment)"><span title="Copy to new transaction" class="glyphicon glyphicon-new-window"></span></a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</form>

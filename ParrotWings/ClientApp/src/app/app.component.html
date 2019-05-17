@@ -1,0 +1,21 @@
+<div class='container'>
+  <div class='row'>
+    <nav class="navbar navbar-inverse" *ngIf="currentUser">
+      <div class="container">
+        <div class="navbar-header">
+          <p class="navbar-text">{{currentUser.name}}: {{currentBalance}} pw</p>
+        </div>
+        <div class="collapse navbar-collapse" >
+          <ul class="nav navbar-nav">
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/payment" >Payment</a></li>
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="" >Payment list</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a routerLink="" (click)="logout()"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <router-outlet></router-outlet>
+  </div>
+</div>
